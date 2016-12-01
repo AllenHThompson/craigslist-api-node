@@ -16,10 +16,34 @@ request(URL, function(error, response, body) {
 
           var data = body.replace(/\s/g, '')
 
-          console.log(body);
-          console.log(data) //SHOW THE HTML FOR THE GOOGLE HOMEPAGE
+          //THE SEARCH METHOD EXECUTES A SEARCH FOR A MATCH BETWWEN
+          function testinput(re, str) {
+               var midstring;
+               if (str.search(re) != -1) {
+                    midstring = ' contains ';
+               } else {
+                    midstring = ' does not contain ';
+               }
+               console.log('data' + midstring + re)
+          }
+          testinput('result-info', data)
+
+          //USE INDEXOF TO FIND LOCATION OF MATCHING STRING THEN SLICE TEXT OUT
+
+          var pos = (data.indexOf('<pclass="result-info"'))
+          console.log(data.slice(pos, pos + 842))
+
+          //String.prototype.split() splits a String object into an array of strings by separating the string into substrings
+
+
+
+          //console.log(body);
+          //console.log(data) //SHOW THE HTML FOR THE GOOGLE HOMEPAGE
      }
+
 })
+
+
 
 // JSON.parse('{"1": 1, "2": 2, "3": {"4": 4, "5": {"6": 6}}}', function(key, value) {
 //      console.log(key);
